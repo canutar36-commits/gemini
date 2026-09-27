@@ -7,7 +7,7 @@ class Bot:
     name = "?"
     label = ""
 
-    def start_hand(self, h):
+    def start_hand(self, h, g=None):
         self.mode = "duz"
 
     # --- açma eşiği ---
@@ -60,7 +60,7 @@ class PairPlayer(Bot):
     name, label = "C", "Çift oyuncusu"
     PAIR_POTENTIAL = 5
 
-    def start_hand(self, h):
+    def start_hand(self, h, g=None):
         real_pairs = sum(h[t] // 2 for t in range(52) if not is_okey(t))
         pot = real_pairs + sum(h[o] for o in OKEYS) + h[FAKE]
         self.mode = "cift" if pot >= self.PAIR_POTENTIAL else "duz"

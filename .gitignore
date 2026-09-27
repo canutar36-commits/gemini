@@ -1,3 +1,5 @@
 __pycache__/
 out/*.pkl
 out/run.log
+out_std/*.pkl
+out_std/run.log
