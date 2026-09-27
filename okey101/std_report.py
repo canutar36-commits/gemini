@@ -64,7 +64,9 @@ def charts(games, P, T, totals, out="out_std"):
     ax.bar(xs, [P[n]["mean"] for n in NAMES], color=[COL[n] for n in NAMES], width=0.6,
            yerr=[P[n]["ci"] for n in NAMES], capsize=6, error_kw={"ecolor": "#333", "lw": 1.2})
     for i, n in enumerate(NAMES):
-        ax.text(i, P[n]["mean"] + P[n]["ci"] + 20, f"{P[n]['mean']:.0f}", ha="center", fontsize=10)
+        m, ci = P[n]["mean"], P[n]["ci"]
+        ax.text(i, m + ci + 15 if m >= 0 else m - ci - 15, f"{m:.0f}", ha="center",
+                va="bottom" if m >= 0 else "top", fontsize=10)
     ax.set_xticks(list(xs)); ax.set_xticklabels([L[n] for n in NAMES], fontsize=9)
     ax.axhline(0, color="#888", lw=0.8)
     ax.set_ylabel("100 el sonu ortalama puan")
