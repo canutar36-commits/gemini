@@ -59,7 +59,7 @@ def charts(data, out="out"):
     P50, T50, tot50 = stats(data[50])
     # 1) boxplot
     fig, ax = plt.subplots(figsize=(8, 4.5))
-    bp = ax.boxplot([tot50[n] for n in NAMES], labels=[LABELS[n] for n in NAMES], patch_artist=True,
+    bp = ax.boxplot([tot50[n] for n in NAMES], tick_labels=[LABELS[n] for n in NAMES], patch_artist=True,
                     widths=0.5, medianprops={"color": "#222", "linewidth": 2}, flierprops={"markersize": 3})
     for patch, n in zip(bp["boxes"], NAMES):
         patch.set_facecolor(COL[n]); patch.set_alpha(0.85); patch.set_edgecolor("white")
